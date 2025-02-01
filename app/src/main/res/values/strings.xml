@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Quiz</string>
+
+    <string name="question_screen_title">Question Screen</string>
+    <string name="cheat_screen_title">Cheat Screen</string>
+
+    <string name="false_button_label">False</string>
+    <string name="true_button_label">True</string>
+
+    <string name="false_text">False</string>
+    <string name="true_text">True</string>
+
+    <string name="correct_text">Correct!</string>
+    <string name="incorrect_text">Incorrect!</string>
+    <string name="cheat_button_label">Cheat</string>
+    <string name="next_button_label">Next</string>
+
+    <string name="empty_text"></string>
+
+    <string name="confirmation_text">Are you sure?</string>
+    <string name="yes_button_label">Yes</string>
+    <string name="no_button_label">No</string>
+</resources>

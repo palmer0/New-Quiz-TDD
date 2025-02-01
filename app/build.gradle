@@ -1,0 +1,60 @@
+plugins {
+    alias(libs.plugins.android.application)
+}
+
+android {
+    namespace 'es.ulpgc.eite.da.quiz'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId "es.ulpgc.eite.da.quiz"
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    implementation libs.appcompat
+    implementation libs.material
+    implementation libs.activity
+    implementation libs.constraintlayout
+
+    testImplementation libs.junit
+    testImplementation libs.robolectric
+    testImplementation libs.rules
+    testImplementation libs.core
+    testImplementation libs.runner
+
+    androidTestImplementation libs.ext.junit
+    androidTestImplementation libs.espresso.core
+    androidTestImplementation libs.uiautomator
+    androidTestImplementation libs.runner
+    androidTestImplementation libs.rules
+
+    //androidTestImplementation 'org.hamcrest:hamcrest-library:2.2'
+
+}
