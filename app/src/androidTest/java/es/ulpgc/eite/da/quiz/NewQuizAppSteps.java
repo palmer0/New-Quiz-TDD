@@ -25,7 +25,7 @@ import es.ulpgc.eite.da.quiz.question.QuestionActivity;
 // Copyright (c) 2025 EITE (ULPGC)
 @RunWith(AndroidJUnit4.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class NewQuizAppTests {
+public class NewQuizAppSteps {
 
     @Before
     public void setUp() {
