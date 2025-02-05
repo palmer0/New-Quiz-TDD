@@ -13,13 +13,7 @@
         </DropdownSelection>
         <DialogSelection />
       </SelectionState>
-      <SelectionState runConfigName="QuestionActivityTest">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
-      <SelectionState runConfigName="QuizEspressoTests">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
-      <SelectionState runConfigName="NewQuizAppTests">
+      <SelectionState runConfigName="NewQuizAppSteps">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>
