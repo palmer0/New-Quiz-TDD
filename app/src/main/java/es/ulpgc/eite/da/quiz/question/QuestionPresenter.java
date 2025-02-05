@@ -163,12 +163,6 @@ public class QuestionPresenter implements QuestionContract.Presenter {
         view.get().displayQuestionData(state);
     }
 
-    private void disableAnswerButtons() {
-        state.falseButton = false;
-        state.trueButton = false;
-        state.cheatButton = false;
-    }
-
     /*
     private void updateQuestionData(boolean userAnswer) {
 
@@ -239,13 +233,26 @@ public class QuestionPresenter implements QuestionContract.Presenter {
         state.questionText = model.getCurrentQuestion();
         state.resultText = model.getEmptyResultText();
 
-        state.falseButton = true;
-        state.trueButton = true;
-        state.cheatButton = true;
+        //state.falseButton = true;
+        //state.trueButton = true;
+        //state.cheatButton = true;
+        enableAnswerButtons();
         state.nextButton = false;
 
         // refresh the display with updated state
         view.get().displayQuestionData(state);
+    }
+
+    private void enableAnswerButtons() {
+        state.falseButton = true;
+        state.trueButton = true;
+        state.cheatButton = true;
+    }
+
+    private void disableAnswerButtons() {
+        state.falseButton = false;
+        state.trueButton = false;
+        state.cheatButton = false;
     }
 
     @Override
