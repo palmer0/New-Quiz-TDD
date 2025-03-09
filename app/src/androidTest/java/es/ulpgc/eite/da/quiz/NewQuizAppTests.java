@@ -1,18 +1,18 @@
 package es.ulpgc.eite.da.quiz;
 
 import static androidx.test.espresso.Espresso.onView;
-import static androidx.test.espresso.Espresso.pressBack;
 
 import android.os.RemoteException;
 
 import androidx.test.core.app.ActivityScenario;
-
+import androidx.test.espresso.Espresso;
 import androidx.test.espresso.action.ViewActions;
 import androidx.test.espresso.assertion.ViewAssertions;
 import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.uiautomator.UiDevice;
+
 import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -23,11 +23,11 @@ import es.ulpgc.eite.da.quiz.app.AppMediator;
 import es.ulpgc.eite.da.quiz.question.QuestionActivity;
 
 // Project: Quiz
-// Created by Luis Hernandez 
+// Created by Luis Hernandez
 // Copyright (c) 2025 EITE (ULPGC)
 @RunWith(AndroidJUnit4.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class NewQuizAppSteps {
+public class NewQuizAppTests {
 
     @Before
     public void setUp() {
@@ -65,19 +65,19 @@ public class NewQuizAppSteps {
         ActivityScenario.launch(QuestionActivity.class);
 
         // Verificar que la primera pregunta se muestra correctamente
-       onView(ViewMatchers.withId(R.id.questionField))
+        onView(ViewMatchers.withId(R.id.questionField))
             .check(ViewAssertions.matches(ViewMatchers.withText(
                 "Christian Bale played Batman in 'The Dark Knight Rises'?"
             )));
 
         // Verificar que los botones de respuesta están habilitados
-       onView(ViewMatchers.withId(R.id.trueButton))
+        onView(ViewMatchers.withId(R.id.trueButton))
             .check(ViewAssertions.matches(ViewMatchers.isEnabled()));
-       onView(ViewMatchers.withId(R.id.falseButton))
+        onView(ViewMatchers.withId(R.id.falseButton))
             .check(ViewAssertions.matches(ViewMatchers.isEnabled()));
 
         // Verificar que el botón "Next" está deshabilitado
-       onView(ViewMatchers.withId(R.id.nextButton))
+        onView(ViewMatchers.withId(R.id.nextButton))
             .check(ViewAssertions.matches(ViewMatchers.isNotEnabled()));
     }
 
@@ -90,24 +90,23 @@ public class NewQuizAppSteps {
         ActivityScenario.launch(QuestionActivity.class);
 
         // Responder correctamente a la primera pregunta
-       onView(ViewMatchers.withId(R.id.trueButton))
-            .perform(ViewActions.click());
+        onView(ViewMatchers.withId(R.id.trueButton)).perform(ViewActions.click());
 
         // Verificar que el resultado es correcto
-       onView(ViewMatchers.withId(R.id.resultField))
+        onView(ViewMatchers.withId(R.id.resultField))
             .check(ViewAssertions.matches(ViewMatchers.withText("Correct!")));
 
         // Girar la pantalla
         rotateScreen();
 
         // Verificar que el estado se conserva después del giro
-       onView(ViewMatchers.withId(R.id.resultField))
+        onView(ViewMatchers.withId(R.id.resultField))
             .check(ViewAssertions.matches(ViewMatchers.withText("Correct!")));
-       onView(ViewMatchers.withId(R.id.trueButton))
+        onView(ViewMatchers.withId(R.id.trueButton))
             .check(ViewAssertions.matches(ViewMatchers.isNotEnabled()));
-       onView(ViewMatchers.withId(R.id.falseButton))
+        onView(ViewMatchers.withId(R.id.falseButton))
             .check(ViewAssertions.matches(ViewMatchers.isNotEnabled()));
-       onView(ViewMatchers.withId(R.id.nextButton))
+        onView(ViewMatchers.withId(R.id.nextButton))
             .check(ViewAssertions.matches(ViewMatchers.isEnabled()));
     }
 
@@ -119,22 +118,20 @@ public class NewQuizAppSteps {
         ActivityScenario.launch(QuestionActivity.class);
 
         // Navegar a la pantalla de "Cheat"
-       onView(ViewMatchers.withId(R.id.cheatButton))
-            .perform(ViewActions.click());
+        onView(ViewMatchers.withId(R.id.cheatButton)).perform(ViewActions.click());
 
         // Hacer clic en "Yes" para ver la respuesta
-       onView(ViewMatchers.withId(R.id.yesButton))
-            .perform(ViewActions.click());
+        onView(ViewMatchers.withId(R.id.yesButton)).perform(ViewActions.click());
 
         // Girar la pantalla
         rotateScreen();
 
         // Verificar que el estado se conserva después del giro
-       onView(ViewMatchers.withId(R.id.answerField))
+        onView(ViewMatchers.withId(R.id.answerField))
             .check(ViewAssertions.matches(ViewMatchers.withText("True")));
-       onView(ViewMatchers.withId(R.id.yesButton))
+        onView(ViewMatchers.withId(R.id.yesButton))
             .check(ViewAssertions.matches(ViewMatchers.isNotEnabled()));
-       onView(ViewMatchers.withId(R.id.noButton))
+        onView(ViewMatchers.withId(R.id.noButton))
             .check(ViewAssertions.matches(ViewMatchers.isNotEnabled()));
     }
 
@@ -149,29 +146,26 @@ public class NewQuizAppSteps {
 
         // Navegar a la última pregunta suponiendo que hay 4 preguntas
         for (int i = 0; i < 4; i++) {
-           onView(ViewMatchers.withId(R.id.trueButton))
-                .perform(ViewActions.click());
-           onView(ViewMatchers.withId(R.id.nextButton))
-                .perform(ViewActions.click());
+            onView(ViewMatchers.withId(R.id.trueButton)).perform(ViewActions.click());
+            onView(ViewMatchers.withId(R.id.nextButton)).perform(ViewActions.click());
         }
 
         // Verificar que la ultima pregunta se muestra correctamente
-       onView(ViewMatchers.withId(R.id.questionField))
+        onView(ViewMatchers.withId(R.id.questionField))
             .check(ViewAssertions.matches(ViewMatchers.withText(
                 "The Teenage Mutant Ninja Turtles are named after famous artists?"
             )));
 
         // Responder a la última pregunta
-       onView(ViewMatchers.withId(R.id.trueButton))
-            .perform(ViewActions.click());
+        onView(ViewMatchers.withId(R.id.trueButton)).perform(ViewActions.click());
 
         // Girar la pantalla
         rotateScreen();
 
         // Verificar que el estado se conserva después del giro
-       onView(ViewMatchers.withId(R.id.resultField))
+        onView(ViewMatchers.withId(R.id.resultField))
             .check(ViewAssertions.matches(ViewMatchers.withText("Correct!")));
-       onView(ViewMatchers.withId(R.id.nextButton))
+        onView(ViewMatchers.withId(R.id.nextButton))
             .check(ViewAssertions.matches(ViewMatchers.isNotEnabled()));
     }
 
@@ -183,12 +177,12 @@ public class NewQuizAppSteps {
         // Iniciar la actividad
         ActivityScenario.launch(QuestionActivity.class);
 
-       onView(ViewMatchers.withId(R.id.cheatButton)).perform(ViewActions.click());
+        onView(ViewMatchers.withId(R.id.cheatButton)).perform(ViewActions.click());
 
         // Girar la pantalla
         rotateScreen();
 
-       onView(ViewMatchers.withId(R.id.confirmationField))
+        onView(ViewMatchers.withId(R.id.confirmationField))
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
     }
 
@@ -201,11 +195,11 @@ public class NewQuizAppSteps {
         ActivityScenario.launch(QuestionActivity.class);
 
 
-       onView(ViewMatchers.withId(R.id.cheatButton)).perform(ViewActions.click());
-       pressBack();
-       onView(ViewMatchers.withId(R.id.trueButton))
+        onView(ViewMatchers.withId(R.id.cheatButton)).perform(ViewActions.click());
+        Espresso.pressBack();
+        onView(ViewMatchers.withId(R.id.trueButton))
             .check(ViewAssertions.matches(ViewMatchers.isEnabled()));
-       onView(ViewMatchers.withId(R.id.falseButton))
+        onView(ViewMatchers.withId(R.id.falseButton))
             .check(ViewAssertions.matches(ViewMatchers.isEnabled()));
     }
 
@@ -221,26 +215,24 @@ public class NewQuizAppSteps {
 
         // Navegar a la última pregunta suponiendo que hay 4 preguntas
         for (int i = 0; i < 4; i++) {
-           onView(ViewMatchers.withId(R.id.trueButton))
-                .perform(ViewActions.click());
-           onView(ViewMatchers.withId(R.id.nextButton))
-                .perform(ViewActions.click());
+            onView(ViewMatchers.withId(R.id.trueButton)).perform(ViewActions.click());
+            onView(ViewMatchers.withId(R.id.nextButton)).perform(ViewActions.click());
         }
 
         // Verificar que la ultima pregunta se muestra correctamente
-       onView(ViewMatchers.withId(R.id.questionField))
+        onView(ViewMatchers.withId(R.id.questionField))
             .check(ViewAssertions.matches(ViewMatchers.withText(
                 "The Teenage Mutant Ninja Turtles are named after famous artists?"
             )));
 
         // Acceder a la pantalla Cheat desde la última pregunta
-       onView(ViewMatchers.withId(R.id.cheatButton)).perform(ViewActions.click());
+        onView(ViewMatchers.withId(R.id.cheatButton)).perform(ViewActions.click());
 
         // Ver la respuesta en la pantalla Cheat
-       onView(ViewMatchers.withId(R.id.yesButton)).perform(ViewActions.click());
+        onView(ViewMatchers.withId(R.id.yesButton)).perform(ViewActions.click());
 
         // Verificar que la respuesta se muestra en la pantalla Cheat
-       onView(ViewMatchers.withId(R.id.answerField))
+        onView(ViewMatchers.withId(R.id.answerField))
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
 
     }
@@ -258,51 +250,53 @@ public class NewQuizAppSteps {
 
         // Navegar a la última pregunta suponiendo que hay 4 preguntas
         for (int i = 0; i < 4; i++) {
-           onView(ViewMatchers.withId(R.id.trueButton))
-                .perform(ViewActions.click());
-           onView(ViewMatchers.withId(R.id.nextButton))
-                .perform(ViewActions.click());
+            onView(ViewMatchers.withId(R.id.trueButton)).perform(ViewActions.click());
+            onView(ViewMatchers.withId(R.id.nextButton)).perform(ViewActions.click());
         }
 
         // Verificar que la ultima pregunta se muestra correctamente
-       onView(ViewMatchers.withId(R.id.questionField))
+        onView(ViewMatchers.withId(R.id.questionField))
             .check(ViewAssertions.matches(ViewMatchers.withText(
                 "The Teenage Mutant Ninja Turtles are named after famous artists?"
             )));
 
         // Acceder a la pantalla Cheat desde la última pregunta
-       onView(ViewMatchers.withId(R.id.cheatButton)).perform(ViewActions.click());
+        onView(ViewMatchers.withId(R.id.cheatButton)).perform(ViewActions.click());
 
         // Ver la respuesta en CheatActivity
-       onView(ViewMatchers.withId(R.id.yesButton)).perform(ViewActions.click());
+        onView(ViewMatchers.withId(R.id.yesButton)).perform(ViewActions.click());
 
         // Verificar que la respuesta se muestra en CheatActivity
-       onView(ViewMatchers.withId(R.id.answerField))
+        onView(ViewMatchers.withId(R.id.answerField))
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
 
         // Regresar a la pantalla Question
-       pressBack();
+        Espresso.pressBack();
 
         // Verificar que la pregunta sigue visible
-       onView(ViewMatchers.withId(R.id.questionField))
+        onView(ViewMatchers.withId(R.id.questionField))
             .check(ViewAssertions.matches(ViewMatchers.withText(
                 "The Teenage Mutant Ninja Turtles are named after famous artists?"
             )));
 
+        // Verificar que el resultado sigue vacio
+        onView(ViewMatchers.withId(R.id.resultField))
+            .check(ViewAssertions.matches(ViewMatchers.withText("")));
+
         // Verificar que los botones de respuesta están deshabilitados
         // después de ver la  respuesta
-       onView(ViewMatchers.withId(R.id.trueButton))
+        onView(ViewMatchers.withId(R.id.trueButton))
             .check(ViewAssertions.matches(ViewMatchers.isNotEnabled()));
-       onView(ViewMatchers.withId(R.id.falseButton))
+        onView(ViewMatchers.withId(R.id.falseButton))
             .check(ViewAssertions.matches(ViewMatchers.isNotEnabled()));
 
         // Verificar que el botón "Next" sigue deshabilitado (ya que es la última pregunta)
-       onView(ViewMatchers.withId(R.id.nextButton))
+        onView(ViewMatchers.withId(R.id.nextButton))
             .check(ViewAssertions.matches(ViewMatchers.isNotEnabled()));
 
         // Verificar que el botón "Cheat" sigue deshabilitado
         // (ya que se ha visto la  respuesta a la  pregunta)
-       onView(ViewMatchers.withId(R.id.nextButton))
+        onView(ViewMatchers.withId(R.id.nextButton))
             .check(ViewAssertions.matches(ViewMatchers.isNotEnabled()));
     }
 
